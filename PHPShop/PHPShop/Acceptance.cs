@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
 
 namespace PHPShop
 {
@@ -15,8 +7,8 @@ namespace PHPShop
     {
         Product getter = new Product();
         Database second = new Database();
-        String login = "San32";
-        
+        const String login = "San32";
+
         public Acceptance(Product let)
         {
             InitializeComponent();
@@ -25,11 +17,10 @@ namespace PHPShop
 
         private void Acceptance_Load(object sender, EventArgs e)
         {
-
-            label1.Text = getter.name;
-            label4.Text = "По цене - " + getter.price + " крышек от бутылки";
+            label1.Text = getter.Name;
+            label4.Text = "По цене - " + getter.Price + " крышек от бутылки";
             label5.Text = " У вас на счете " + second.GetConnect("balance", "users", "login", login) + " пробок";
-            pictureBox1.Image = getter.image;
+            pictureBox1.Image = getter.Image;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,6 +29,7 @@ namespace PHPShop
             int balance = Convert.ToInt32(second.GetConnect("balance", "users", "login", login));
             int ost;
             String result;
+
             if (Convert.ToString(textBox1.Text) != "")
             {
                 amount = Convert.ToInt32(textBox1.Text);
@@ -46,26 +38,24 @@ namespace PHPShop
             {
                 amount = 1;
             }
-            int price = getter.price * amount;
+
+            int price = getter.Price * amount;
 
             if (price <= balance)
-            {    
+            {
                 ost = balance - price;
-                second.SetConnect("balance", "users", "login", login, Convert.ToString(ost));      
+                second.SetConnect("balance", "users", "login", login, Convert.ToString(ost));
                 label5.Text = " У вас на счете " + second.GetConnect("balance", "users", "login", login) + " пробок";
-                result = "Ура! Вы приобрели товар: \"" + getter.name + "\" в количестве " + amount + " штук.\nВаш баланс " + ost + " пробок";
+                result = "Ура! Вы приобрели товар: \"" + getter.Name + "\" в количестве " + amount + " штук.\nВаш баланс " + ost + " пробок";
             }
             else
             {
                 result = "Не так быстро, парниша! У тебя недостаточно пробок!";
             }
-            
 
             Dialog a = new Dialog(result);
             a.Visible = true;
             this.Close();
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -77,11 +67,11 @@ namespace PHPShop
         {
             if (Convert.ToString(textBox1.Text) != "")
             {
-                label4.Text = "По цене - " + Convert.ToString(getter.price * Convert.ToInt32(textBox1.Text) + " крышек от бутылки");
+                label4.Text = "По цене - " + Convert.ToString(getter.Price * Convert.ToInt32(textBox1.Text) + " крышек от бутылки");
             }
             else
             {
-                label4.Text = "По цене - " + getter.price + " крышек от бутылки";
+                label4.Text = "По цене - " + getter.Price + " крышек от бутылки";
             }
         }
     }

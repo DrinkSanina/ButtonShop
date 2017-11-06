@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using PHPShop.Products;
 
 namespace PHPShop
 {
@@ -14,30 +14,27 @@ namespace PHPShop
 
         Database first = new Database();
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void LetterA_Click(object sender, EventArgs e)
         {
-            Product letter = new Product()
-            {
-                ID = "1",
-                image = Properties.Resources.A
-            };
-            letter.price = Convert.ToInt32(first.GetConnect("price", "products", "id", letter.ID));
-            letter.name = first.GetConnect("name", "products", "id", letter.ID);
-            Acceptance form = new Acceptance(letter);
+            Letter letterA = new Letter(
+                "1", 
+                first.GetConnect("name", "products", "id", "1"), 
+                Properties.Resources.A, 
+                Convert.ToInt32(first.GetConnect("price", "products", "id", "1"))
+                );
+            Acceptance form = new Acceptance(letterA);
             form.Visible = true;
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void LetterB_Click(object sender, EventArgs e)
         {
-            Product letter = new Product()
-            {
-                ID = "2",
-                image = Properties.Resources.B
-            };
-
-            letter.price = Convert.ToInt32(first.GetConnect("price", "products", "id", letter.ID));
-            letter.name = first.GetConnect("name", "products", "id", letter.ID);
-            Acceptance form = new Acceptance(letter);
+            Letter letterB = new Letter(
+                "2",
+                first.GetConnect("name", "products", "id", "2"),
+                Properties.Resources.A,
+                Convert.ToInt32(first.GetConnect("price", "products", "id", "2"))
+                );
+            Acceptance form = new Acceptance(letterB);
             form.Visible = true;
         }
     }

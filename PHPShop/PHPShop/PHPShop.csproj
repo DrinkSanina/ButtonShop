@@ -69,6 +69,7 @@
       <DependentUpon>Dialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Product.cs" />
+    <Compile Include="Products\Letter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Acceptance.resx">

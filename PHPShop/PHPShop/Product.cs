@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PHPShop
 {
     public class Product
     {
-        public int price;
-        public String name;
-        public System.Drawing.Image image;
-        public String ID;
+        public int Price { get; set; }
+        public String Name { get; set; }
+        public Image Image { get; set; }
+        public String ID { get; set; }
     }
 }

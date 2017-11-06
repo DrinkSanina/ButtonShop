@@ -43,7 +43,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 175);
+            this.label1.Location = new System.Drawing.Point(57, 169);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
@@ -52,16 +52,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Minion Pro", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(77, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(267, 33);
+            this.label2.Size = new System.Drawing.Size(289, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Вы собираетесь купить:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(259, 98);
+            this.textBox1.Location = new System.Drawing.Point(261, 98);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 2;
@@ -136,6 +136,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Acceptance";
             this.Text = "Acceptance";
             this.Load += new System.EventHandler(this.Acceptance_Load);
