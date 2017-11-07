@@ -45,5 +45,16 @@ namespace PHPShop
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             command.ExecuteScalar();
         }
+
+        /// <summary>
+        /// Регестрация пользователя в БД
+        /// </summary>
+        public void RegUser(String login, String password, Double balance)
+        {
+            password = password.Trim('!', '\"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '-', '!', '@', '#', '$','^','&','*','[',']','{','}');
+            string sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
+            MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
+            command.ExecuteScalar();
+        }
     }
 }

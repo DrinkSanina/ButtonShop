@@ -4,10 +4,10 @@ using PHPShop.Products;
 
 namespace PHPShop
 {
-    public partial class Form1 : Form
+    public partial class Assortment : Form
     {
 
-        public Form1()
+        public Assortment()
         {
             InitializeComponent();
         }
@@ -36,6 +36,20 @@ namespace PHPShop
                 );
             Acceptance form = new Acceptance(letterB);
             form.Visible = true;
+        }
+
+        private void RegB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                first.RegUser(LoginTBox.Text.ToString(), PasswordTBox.Text.ToString(), Convert.ToDouble(BalanceTBox.Text.ToString()));
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Введёт неверный баланс", "Ошибка", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("Done");
         }
     }
 }
