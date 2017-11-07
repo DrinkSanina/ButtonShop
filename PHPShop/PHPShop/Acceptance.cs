@@ -6,7 +6,7 @@ namespace PHPShop
     public partial class Acceptance : Form
     {
         Product getter = new Product();
-        Database second = new Database();
+        DatabaseMethods second = new DatabaseMethods();
         const String login = "San32";
 
         public Acceptance(Product let)

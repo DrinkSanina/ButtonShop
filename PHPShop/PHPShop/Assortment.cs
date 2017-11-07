@@ -12,7 +12,7 @@ namespace PHPShop
             InitializeComponent();
         }
 
-        Database first = new Database();
+        DatabaseMethods first = new DatabaseMethods();
 
         private void LetterA_Click(object sender, EventArgs e)
         {

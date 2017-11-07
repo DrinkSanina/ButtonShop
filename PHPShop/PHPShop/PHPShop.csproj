@@ -64,7 +64,8 @@
       <DependentUpon>Assortment.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Database.cs" />
+    <Compile Include="DataBase.cs" />
+    <Compile Include="DatabaseMethods.cs" />
     <Compile Include="Dialog.cs">
       <SubType>Form</SubType>
     </Compile>
