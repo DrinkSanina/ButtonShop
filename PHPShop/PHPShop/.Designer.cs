@@ -149,6 +149,7 @@
             this.Controls.Add(this.LetterA);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Assortment";
             this.Text = "Ассортимент";
             ((System.ComponentModel.ISupportInitialize)(this.LetterA)).EndInit();

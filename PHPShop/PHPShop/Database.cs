@@ -51,7 +51,7 @@ namespace PHPShop
         /// </summary>
         public void RegUser(String login, String password, Double balance)
         {
-            password = password.Trim('!', '\"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '-', '!', '@', '#', '$','^','&','*','[',']','{','}');
+            password = password.Trim(' ','!', '\"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '-', '!', '@', '#', '$','^','&','*','[',']','{','}');
             string sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             command.ExecuteScalar();

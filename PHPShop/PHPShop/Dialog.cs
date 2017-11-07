@@ -19,7 +19,7 @@ namespace PHPShop
             message = res;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OkB_Click(object sender, EventArgs e)
         {
             this.Close();
         }
