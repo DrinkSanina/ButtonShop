@@ -10,7 +10,7 @@ namespace PHPShop
             {
                 MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder()
                 {
-                    Server = "",
+                    Server = "Test",
                     Database = "",
                     UserID = "",
                     Password = ""
