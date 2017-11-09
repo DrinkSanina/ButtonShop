@@ -98,7 +98,6 @@ namespace PHPShop
             catch (Exception)
             {
                 MessageBox.Show("Данного пользователя не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
             }
             ConnectToDB.Close();
         }
