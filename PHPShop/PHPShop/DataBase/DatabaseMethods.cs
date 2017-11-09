@@ -36,23 +36,36 @@ namespace PHPShop
         /// </summary>
         public void RegUser(String login, String password, Decimal balance)
         {
-            char[] badSym = { ' ', '!', '\"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '-', '!', '@', '#', '$', '^', '&', '*', '[', ']', '{', '}','\\' };
+            char[] badSym = { ' ', '!', '\"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '-', '!', '@', '#', '$', '^', '&', '*', '[', ']', '{', '}', '\\' };
             login = login.Trim(' ');
             password = password.Trim(' ');
             int test = -1; //Проверка на символы, которые нельзя вводить
             test = login.IndexOfAny(badSym);
             test = password.IndexOfAny(badSym);
-            if(test != -1)
+
+            if (test != -1 || password == "" || login == "")
             {
                 MessageBox.Show("Введите правильный логин или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ConnectToDB.Close();
                 return;
             }
-            string sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
+            string sql = $"SELECT * FROM users WHERE login='{login}'";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
-            command.ExecuteScalar();
+            try
+            {
+                string resultPass = command.ExecuteScalar().ToString();
+            }
+            catch (Exception)
+            {
+                sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
+                command = new MySqlCommand(sql, ConnectToDB);
+                command.ExecuteScalar();
+                MessageBox.Show("Вы успешно зарегестрировались!", "Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConnectToDB.Close();
+                return;
+            }
+            MessageBox.Show("Пользователь с данным логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             ConnectToDB.Close();
-            MessageBox.Show("Done");
         }
 
         /// <summary>
@@ -66,9 +79,27 @@ namespace PHPShop
             password = password.Replace('/', ' ');
             login = login.Trim(' ');
             password = password.Trim(' ');
-            string sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}')";
-            //MySqlCommand command = new MySqlCommand(sql, ConnectToDB)
-            //command.ExecuteScalar();
+            string sql = $"SELECT password FROM users WHERE login='{login}'";
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
+                string resultPass = command.ExecuteScalar().ToString();
+                if (password == resultPass)
+                {
+                    ConnectToDB.Close();
+                    MessageBox.Show("Вы успешно вошли", "Вход", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный пароль!", "Вход", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Данного пользователя не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
             ConnectToDB.Close();
         }
 
