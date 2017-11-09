@@ -38,6 +38,7 @@
             this.LoginTBox = new System.Windows.Forms.TextBox();
             this.PasswordTBox = new System.Windows.Forms.TextBox();
             this.BalanceTBox = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.LetterA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LetterB)).BeginInit();
             this.SuspendLayout();
@@ -133,11 +134,20 @@
             this.BalanceTBox.Size = new System.Drawing.Size(100, 20);
             this.BalanceTBox.TabIndex = 8;
             // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Location = new System.Drawing.Point(332, 52);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(256, 128);
+            this.panel1.TabIndex = 9;
+            // 
             // Assortment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 267);
+            this.ClientSize = new System.Drawing.Size(600, 414);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.BalanceTBox);
             this.Controls.Add(this.PasswordTBox);
             this.Controls.Add(this.LoginTBox);
@@ -152,6 +162,7 @@
             this.MaximizeBox = false;
             this.Name = "Assortment";
             this.Text = "Ассортимент";
+            this.Load += new System.EventHandler(this.Assortment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LetterA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LetterB)).EndInit();
             this.ResumeLayout(false);
@@ -171,6 +182,7 @@
         private System.Windows.Forms.TextBox LoginTBox;
         private System.Windows.Forms.TextBox PasswordTBox;
         private System.Windows.Forms.TextBox BalanceTBox;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

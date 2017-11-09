@@ -51,5 +51,37 @@ namespace PHPShop
             }
             MessageBox.Show("Done");
         }
+
+
+        private void Assortment_Load(object sender, EventArgs e)
+        {
+            int m = 5;
+            int n = 5;
+            int lastID = first.GetMaxConnect("max(id)", "products");
+            String pictureBoxName = "";
+            PictureBox[] pictureBox = new PictureBox[lastID + 1];
+            for (int currentID = 1; currentID < pictureBox.Length; currentID++)
+            {
+                pictureBoxName = first.GetConnect("id", "products", "id", Convert.ToString(currentID));
+                pictureBox[currentID] = new System.Windows.Forms.PictureBox();
+                pictureBox[currentID].Location = new System.Drawing.Point(m, n);
+                pictureBox[currentID].Size = new System.Drawing.Size(100, 100);
+                pictureBox[currentID].Name = Convert.ToString(currentID);
+                pictureBox[currentID].Image = Properties.Resources.A;
+                pictureBox[currentID].TabIndex = currentID;
+                pictureBox[currentID].TabStop = false;
+                pictureBox[currentID].Click += new EventHandler(LetterA_Click);
+                panel1.Controls.Add(pictureBox[currentID]);
+                m = m + 100;
+
+
+                //    if (currentID % 10 == 0)
+                //    {
+                //        m = 10;
+                //        n += 10;
+                //    }
+
+            }
+        }
     }
 }
