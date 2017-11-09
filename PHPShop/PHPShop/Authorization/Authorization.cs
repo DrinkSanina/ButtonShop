@@ -22,6 +22,11 @@ namespace PHPShop
                 MessageBox.Show("Ошибка регистрации. " + ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
+
+        private void AuthorizationButton_Click(object sender, EventArgs e)
+        {
+            dbMethods.LoginUser(LoginTextBox.Text.ToString(), PassTextBox.Text.ToString());
             MessageBox.Show("Done");
         }
     }
