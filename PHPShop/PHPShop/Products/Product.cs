@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace PHPShop
+namespace PHPShop.Products
 {
     public class Product
     {
