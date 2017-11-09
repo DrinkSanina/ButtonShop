@@ -10,10 +10,10 @@ namespace PHPShop
             {
                 MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder()
                 {
-                    Server = "Test",
-                    Database = "",
-                    UserID = "",
-                    Password = ""
+                    Server = "Test", //Адрес сервера 
+                    Database = "", //Имя БД
+                    UserID = "", //login пользователя
+                    Password = "" //Пароль
                 };
                 MySqlConnection con = new MySqlConnection();
                 con.ConnectionString = mysqlCSB.ConnectionString;
