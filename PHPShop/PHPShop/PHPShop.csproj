@@ -64,7 +64,6 @@
       <DependentUpon>Assortment.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Authorization\Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,10 +72,6 @@
     </Compile>
     <Compile Include="DataBase\DataBase.cs" />
     <Compile Include="DataBase\DatabaseMethods.cs" />
-=======
-    <Compile Include="DataBase.cs" />
-    <Compile Include="DatabaseMethods.cs" />
->>>>>>> 0557884... Merge pull request #1 from San32x/Dev
     <Compile Include="Dialog.cs">
       <SubType>Form</SubType>
     </Compile>

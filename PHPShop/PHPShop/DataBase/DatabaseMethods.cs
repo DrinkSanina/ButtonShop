@@ -1,7 +1,5 @@
-<<<<<<< HEAD:PHPShop/PHPShop/DataBase/DatabaseMethods.cs
-﻿using System;
+using System;
 using MySql.Data.MySqlClient;
-
 namespace PHPShop
 {
     class DatabaseMethods : DataBase
@@ -37,30 +35,6 @@ namespace PHPShop
             string sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             command.ExecuteScalar();
-=======
-﻿using MySql.Data.MySqlClient;
-
-namespace PHPShop
-{
-    class DataBase
-    {
-        protected MySqlConnection ConnectToDB
-        {
-            get
-            {
-                MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder()
-                {
-                    Server = "Test", //Адрес сервера 
-                    Database = "", //Имя БД
-                    UserID = "", //login пользователя
-                    Password = "" //Пароль
-                };
-                MySqlConnection con = new MySqlConnection();
-                con.ConnectionString = mysqlCSB.ConnectionString;
-                con.Open();
-                return con;
-            }
->>>>>>> 0557884... Merge pull request #1 from San32x/Dev:PHPShop/PHPShop/Database.cs
         }
     }
 }
