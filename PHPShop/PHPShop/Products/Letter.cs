@@ -12,7 +12,7 @@ namespace PHPShop.Products
         /// <param name="name">Имя товара</param>
         /// <param name="image">Картинка товара</param>
         /// <param name="price">Цена товара</param>
-        public Letter(string iD, String name, Image image, int price)
+        public Letter(string iD, string name, Image image, decimal price)
         {
             ID = iD;
             Name = name;

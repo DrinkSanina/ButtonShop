@@ -4,15 +4,15 @@ using PHPShop.Products;
 
 namespace PHPShop
 {
-    public partial class Form1 : Form
+    public partial class Assortment : Form
     {
 
-        public Form1()
+        public Assortment()
         {
             InitializeComponent();
         }
 
-        Database first = new Database();
+        DatabaseMethods first = new DatabaseMethods();
 
         private void LetterA_Click(object sender, EventArgs e)
         {
@@ -20,7 +20,7 @@ namespace PHPShop
                 "1", 
                 first.GetConnect("name", "products", "id", "1"), 
                 Properties.Resources.A, 
-                Convert.ToInt32(first.GetConnect("price", "products", "id", "1"))
+                Convert.ToDecimal(first.GetConnect("price", "products", "id", "1"))
                 );
             Acceptance form = new Acceptance(letterA);
             form.Visible = true;
@@ -31,11 +31,25 @@ namespace PHPShop
             Letter letterB = new Letter(
                 "2",
                 first.GetConnect("name", "products", "id", "2"),
-                Properties.Resources.A,
-                Convert.ToInt32(first.GetConnect("price", "products", "id", "2"))
+                Properties.Resources.B,
+                Convert.ToDecimal(first.GetConnect("price", "products", "id", "2"))
                 );
             Acceptance form = new Acceptance(letterB);
             form.Visible = true;
+        }
+
+        private void RegB_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                first.RegUser(LoginTBox.Text.ToString(), PasswordTBox.Text.ToString(), Convert.ToDouble(BalanceTBox.Text.ToString()));
+            }
+            catch (System.FormatException)
+            {
+                MessageBox.Show("Введён неверный баланс", "Ошибка", MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("Done");
         }
     }
 }

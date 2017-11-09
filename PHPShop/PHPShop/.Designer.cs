@@ -1,6 +1,6 @@
 ﻿namespace PHPShop
 {
-    partial class Form1
+    partial class Assortment
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -34,6 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.RegB = new System.Windows.Forms.Button();
+            this.LoginTBox = new System.Windows.Forms.TextBox();
+            this.PasswordTBox = new System.Windows.Forms.TextBox();
+            this.BalanceTBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.LetterA)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LetterB)).BeginInit();
             this.SuspendLayout();
@@ -95,11 +99,49 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Собери клавиатуру! Просто жмякни на любую";
             // 
-            // Form1
+            // RegB
+            // 
+            this.RegB.Location = new System.Drawing.Point(103, 206);
+            this.RegB.Name = "RegB";
+            this.RegB.Size = new System.Drawing.Size(75, 23);
+            this.RegB.TabIndex = 6;
+            this.RegB.Text = "button1";
+            this.RegB.UseVisualStyleBackColor = true;
+            this.RegB.Click += new System.EventHandler(this.RegB_Click);
+            // 
+            // LoginTBox
+            // 
+            this.LoginTBox.Location = new System.Drawing.Point(17, 180);
+            this.LoginTBox.Name = "LoginTBox";
+            this.LoginTBox.Size = new System.Drawing.Size(100, 20);
+            this.LoginTBox.TabIndex = 7;
+            this.LoginTBox.Text = "Login";
+            // 
+            // PasswordTBox
+            // 
+            this.PasswordTBox.Location = new System.Drawing.Point(168, 180);
+            this.PasswordTBox.Name = "PasswordTBox";
+            this.PasswordTBox.PasswordChar = '*';
+            this.PasswordTBox.Size = new System.Drawing.Size(100, 20);
+            this.PasswordTBox.TabIndex = 7;
+            this.PasswordTBox.Text = "r";
+            // 
+            // BalanceTBox
+            // 
+            this.BalanceTBox.Location = new System.Drawing.Point(92, 154);
+            this.BalanceTBox.Name = "BalanceTBox";
+            this.BalanceTBox.Size = new System.Drawing.Size(100, 20);
+            this.BalanceTBox.TabIndex = 8;
+            // 
+            // Assortment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(280, 267);
+            this.Controls.Add(this.BalanceTBox);
+            this.Controls.Add(this.PasswordTBox);
+            this.Controls.Add(this.LoginTBox);
+            this.Controls.Add(this.RegB);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -107,7 +149,8 @@
             this.Controls.Add(this.LetterA);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.MaximizeBox = false;
+            this.Name = "Assortment";
             this.Text = "Ассортимент";
             ((System.ComponentModel.ISupportInitialize)(this.LetterA)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LetterB)).EndInit();
@@ -124,6 +167,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button RegB;
+        private System.Windows.Forms.TextBox LoginTBox;
+        private System.Windows.Forms.TextBox PasswordTBox;
+        private System.Windows.Forms.TextBox BalanceTBox;
     }
 }
 

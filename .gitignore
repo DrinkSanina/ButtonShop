@@ -297,3 +297,7 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Connect to DB
+PHPShop/PHPShop/Database.cs
+PHPShop/PHPShop/Database.cs
