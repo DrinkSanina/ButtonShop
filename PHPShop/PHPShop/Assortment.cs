@@ -42,7 +42,7 @@ namespace PHPShop
         {
             try
             {
-                first.RegUser(LoginTBox.Text.ToString(), PasswordTBox.Text.ToString(), Convert.ToDouble(BalanceTBox.Text.ToString()));
+                first.RegUser(LoginTBox.Text.ToString(), PasswordTBox.Text.ToString(), Convert.ToDecimal(BalanceTBox.Text.ToString()));
             }
             catch (System.FormatException)
             {

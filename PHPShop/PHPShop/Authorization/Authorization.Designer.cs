@@ -44,6 +44,7 @@
             this.AuthorizationButton.TabIndex = 0;
             this.AuthorizationButton.Text = "Войти";
             this.AuthorizationButton.UseVisualStyleBackColor = true;
+            this.AuthorizationButton.Click += new System.EventHandler(this.AuthorizationButton_Click);
             // 
             // LoginLabel
             // 
