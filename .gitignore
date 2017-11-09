@@ -299,5 +299,4 @@ __pycache__/
 *.xsd.cs
 
 # Connect to DB
-PHPShop/PHPShop/Database.cs
-PHPShop/PHPShop/Database.cs
+PHPShop/PHPShop/DataBase/Database.cs

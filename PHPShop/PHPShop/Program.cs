@@ -3,7 +3,6 @@ using System.Windows.Forms;
 
 namespace PHPShop
 {
-
     static class Program
     {
         
@@ -15,7 +14,11 @@ namespace PHPShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
+            Application.Run(new Authorization());
+=======
             Application.Run(new Assortment());
+>>>>>>> 0557884... Merge pull request #1 from San32x/Dev
         }
     }
 }
