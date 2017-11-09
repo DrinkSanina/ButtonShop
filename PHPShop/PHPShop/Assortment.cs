@@ -13,54 +13,25 @@ namespace PHPShop
         }
 
         DatabaseMethods first = new DatabaseMethods();
+        const String pictureVault = "http://f0169802.xsph.ru/pictures/"; //Путь к папке с картинками на сервере
 
-        private void LetterA_Click(object sender, EventArgs e)
+        private void Picture_Click(object sender, EventArgs e)
         {
-            Letter letterA = new Letter(
-                "1", 
-                first.GetConnect("name", "products", "id", "1"), 
-                Properties.Resources.A, 
-                Convert.ToDecimal(first.GetConnect("price", "products", "id", "1"))
-                );
-            Acceptance form = new Acceptance(letterA);
+            PictureBox example = (PictureBox) sender;
+            Acceptance form = new Acceptance(example);
             form.Visible = true;
         }
-
-        private void LetterB_Click(object sender, EventArgs e)
-        {
-            Letter letterB = new Letter(
-                "2",
-                first.GetConnect("name", "products", "id", "2"),
-                Properties.Resources.B,
-                Convert.ToDecimal(first.GetConnect("price", "products", "id", "2"))
-                );
-            Acceptance form = new Acceptance(letterB);
-            form.Visible = true;
-        }
-
-        private void RegB_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                first.RegUser(LoginTBox.Text.ToString(), PasswordTBox.Text.ToString(), Convert.ToDecimal(BalanceTBox.Text.ToString()));
-            }
-            catch (System.FormatException)
-            {
-                MessageBox.Show("Введён неверный баланс", "Ошибка", MessageBoxButtons.OK ,MessageBoxIcon.Error);
-                return;
-            }
-            MessageBox.Show("Done");
-        }
-
+ 
 
         private void Assortment_Load(object sender, EventArgs e)
         {
-            const String pictureVault = "http://f0169802.xsph.ru/pictures/";
-            int m = 5;
+            
+            int m = 0;
             int n = 5;
             int lastID = first.GetMaxConnect("max(id)", "products");
             String pictureBoxName = "";
             PictureBox[] pictureBox = new PictureBox[lastID + 1];
+            Label[] label = new Label[lastID + 1];
             for (int currentID = 1; currentID < pictureBox.Length; currentID++)
             {
                 pictureBoxName = first.GetConnect("id", "products", "id", Convert.ToString(currentID));
@@ -72,14 +43,21 @@ namespace PHPShop
                 pictureBox[currentID].ImageLocation = path;
                 pictureBox[currentID].TabIndex = currentID;
                 pictureBox[currentID].TabStop = false;
-                pictureBox[currentID].Click += new EventHandler(LetterA_Click);
+                pictureBox[currentID].Click += new EventHandler(Picture_Click);
+
+                label[currentID] = new System.Windows.Forms.Label();
+                label[currentID].Location = new System.Drawing.Point(m + 19, n + 104);
+                label[currentID].Text = first.GetConnect("name", "products", "id", Convert.ToString(currentID));
+                label[currentID].Size = new System.Drawing.Size(83, 12);
+
                 panel1.Controls.Add(pictureBox[currentID]);
-                m = m + 100;
+                panel1.Controls.Add(label[currentID]);
+                m = m + 110;
 
                     if (currentID % 3 == 0)
                     {
-                        m = 5;
-                        n += 100;
+                        m = 0;
+                        n += 150;
                     }
             }
         }

@@ -44,7 +44,7 @@
             // productName
             // 
             this.productName.AutoSize = true;
-            this.productName.Location = new System.Drawing.Point(57, 169);
+            this.productName.Location = new System.Drawing.Point(47, 169);
             this.productName.Name = "productName";
             this.productName.Size = new System.Drawing.Size(35, 13);
             this.productName.TabIndex = 0;
