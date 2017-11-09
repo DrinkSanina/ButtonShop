@@ -139,14 +139,14 @@
             this.panel1.AutoScroll = true;
             this.panel1.Location = new System.Drawing.Point(332, 52);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(256, 128);
+            this.panel1.Size = new System.Drawing.Size(323, 163);
             this.panel1.TabIndex = 9;
             // 
             // Assortment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 414);
+            this.ClientSize = new System.Drawing.Size(716, 414);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BalanceTBox);
             this.Controls.Add(this.PasswordTBox);

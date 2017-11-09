@@ -55,6 +55,7 @@ namespace PHPShop
 
         private void Assortment_Load(object sender, EventArgs e)
         {
+            const String pictureVault = "http://f0169802.xsph.ru/pictures/";
             int m = 5;
             int n = 5;
             int lastID = first.GetMaxConnect("max(id)", "products");
@@ -67,20 +68,19 @@ namespace PHPShop
                 pictureBox[currentID].Location = new System.Drawing.Point(m, n);
                 pictureBox[currentID].Size = new System.Drawing.Size(100, 100);
                 pictureBox[currentID].Name = Convert.ToString(currentID);
-                pictureBox[currentID].Image = Properties.Resources.A;
+                String path = pictureVault + first.GetConnect("picture", "products", "id", Convert.ToString(currentID));
+                pictureBox[currentID].ImageLocation = path;
                 pictureBox[currentID].TabIndex = currentID;
                 pictureBox[currentID].TabStop = false;
                 pictureBox[currentID].Click += new EventHandler(LetterA_Click);
                 panel1.Controls.Add(pictureBox[currentID]);
                 m = m + 100;
 
-
-                //    if (currentID % 10 == 0)
-                //    {
-                //        m = 10;
-                //        n += 10;
-                //    }
-
+                    if (currentID % 3 == 0)
+                    {
+                        m = 5;
+                        n += 100;
+                    }
             }
         }
     }
