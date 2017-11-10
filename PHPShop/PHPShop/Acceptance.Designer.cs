@@ -152,7 +152,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Acceptance";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acceptance";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Acceptance_FormClosed);
             this.Load += new System.EventHandler(this.Acceptance_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.amount)).EndInit();

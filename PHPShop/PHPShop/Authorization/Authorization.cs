@@ -29,10 +29,13 @@ namespace PHPShop
             try
             {
                 dbMethods.LoginUser(LoginTextBox.Text.ToString(), PassTextBox.Text.ToString());
+                Assortment a = new Assortment();
+                a.Show();
+                Hide();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show("Ошибка входа.\n" + ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка входа.\n", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

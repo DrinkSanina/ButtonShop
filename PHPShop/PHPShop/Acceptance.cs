@@ -71,5 +71,10 @@ namespace PHPShop
                 priceLabel.Text = "По цене - " + currentProduct.Price + " крышек от бутылки";
             }
         }
+
+        private void Acceptance_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Dispose();
+        }
     }
 }

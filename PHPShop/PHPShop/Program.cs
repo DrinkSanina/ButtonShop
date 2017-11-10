@@ -14,7 +14,7 @@ namespace PHPShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Assortment());
+            Application.Run(new Authorization());
         }
     }
 }

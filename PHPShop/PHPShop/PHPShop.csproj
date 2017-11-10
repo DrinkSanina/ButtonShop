@@ -58,11 +58,14 @@
     <Compile Include="Acceptance.Designer.cs">
       <DependentUpon>Acceptance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Assortment.cs">
+    <Compile Include="AssortmentEngine\Assortment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include=".Designer.cs">
+    <Compile Include="AssortmentEngine\.Designer.cs">
       <DependentUpon>Assortment.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssortmentEngine\AssortmentLoad.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Authorization\Authorization.cs">
@@ -86,7 +89,7 @@
     <EmbeddedResource Include="Acceptance.resx">
       <DependentUpon>Acceptance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Assortment.resx">
+    <EmbeddedResource Include="AssortmentEngine\Assortment.resx">
       <DependentUpon>Assortment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization\Authorization.resx">
