@@ -10,6 +10,11 @@ namespace PHPShop
 
         string login;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="get"></param>
+        /// <param name="login"></param>
         public Acceptance(PictureBox get, string login)
         {
             InitializeComponent();
@@ -21,6 +26,11 @@ namespace PHPShop
             amount.Maximum = Convert.ToInt32(second.GetConnect("amount", "products", "id", currentProduct.ID));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Acceptance_Load(object sender, EventArgs e)
         {
             productName.Text = currentProduct.Name;
@@ -29,6 +39,11 @@ namespace PHPShop
             pictureBox1.Image = currentProduct.Image;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Buy_Click(object sender, EventArgs e)
         {
             int productAmount = Convert.ToInt32(this.amount.Value);

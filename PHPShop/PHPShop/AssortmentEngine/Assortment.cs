@@ -15,6 +15,9 @@ namespace PHPShop
             UserNameLabel.Text = $"Добро пожаловать, {login}";
         }
 
+        /// <summary>
+        /// Метод вызова окна покупки
+        /// </summary>
         protected void Picture_Click(object sender, EventArgs e)
         {
             PictureBox example = (PictureBox)sender;
