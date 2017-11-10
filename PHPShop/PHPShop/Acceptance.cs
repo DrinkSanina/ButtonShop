@@ -34,6 +34,7 @@ namespace PHPShop
             int productAmount = Convert.ToInt32(this.amount.Value);
             decimal balance = Convert.ToDecimal(second.GetConnect("balance", "users", "login", login));
             decimal ost;
+            int productOst;
             String result;
 
             decimal price = currentProduct.Price * productAmount;
@@ -41,6 +42,8 @@ namespace PHPShop
             if (price <= balance)
             {
                 ost = balance - price;
+                productOst = Convert.ToInt32(amount.Maximum) - productAmount;
+                second.SetConnect("amount", "products", "id", currentProduct.ID, Convert.ToString(productOst));
                 second.SetConnect("balance", "users", "login", login, Convert.ToString(ost));
                 balanceLabel.Text = " У вас на счете " + second.GetConnect("balance", "users", "login", login) + " пробок";
                 result = "Ура! Вы приобрели товар: \"" + currentProduct.Name + "\" в количестве " + productAmount + " штук.\nВаш баланс " + ost + " пробок";
