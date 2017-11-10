@@ -19,10 +19,26 @@ namespace PHPShop
             }
             catch (System.FormatException ex)
             {
-                MessageBox.Show("Ошибка регистрации. " + ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ошибка регистрации.\n" + ex.ToString(), "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            MessageBox.Show("Done");
+        }
+
+        private void AuthorizationButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dbMethods.LoginUser(LoginTextBox.Text.ToString(), PassTextBox.Text.ToString()) == true)
+                {
+                    Assortment a = new Assortment(LoginTextBox.Text.ToString());
+                    a.Show();
+                    Hide();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ошибка входа.\n", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

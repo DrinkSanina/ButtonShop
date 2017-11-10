@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,13 +58,14 @@
     <Compile Include="Acceptance.Designer.cs">
       <DependentUpon>Acceptance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Assortment.cs">
+    <Compile Include="AssortmentEngine\Assortment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include=".Designer.cs">
+    <Compile Include="AssortmentEngine\.Designer.cs">
       <DependentUpon>Assortment.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AssortmentEngine\AssortmentLoad.cs" />
     <Compile Include="Authorization\Authorization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,27 +74,17 @@
     </Compile>
     <Compile Include="DataBase\DataBase.cs" />
     <Compile Include="DataBase\DatabaseMethods.cs" />
-    <Compile Include="Dialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialog.Designer.cs">
-      <DependentUpon>Dialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Products\Product.cs" />
-    <Compile Include="Products\Types\Letter.cs" />
+    <Compile Include="AssortmentEngine\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Acceptance.resx">
       <DependentUpon>Acceptance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Assortment.resx">
+    <EmbeddedResource Include="AssortmentEngine\Assortment.resx">
       <DependentUpon>Assortment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authorization\Authorization.resx">
       <DependentUpon>Authorization.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialog.resx">
-      <DependentUpon>Dialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,15 +111,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\A.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\B.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MySql.Data.dll.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="docs\MySqlCommand.xml" />
     <Content Include="docs\MySqlCommandBuilder.xml" />
     <Content Include="docs\MySqlConnection.xml" />
@@ -139,6 +122,9 @@
     <Content Include="docs\MySqlParameter.xml" />
     <Content Include="docs\MySqlParameterCollection.xml" />
     <Content Include="docs\MySqlTransaction.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

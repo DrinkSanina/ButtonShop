@@ -41,9 +41,10 @@
             this.AuthorizationButton.Location = new System.Drawing.Point(12, 76);
             this.AuthorizationButton.Name = "AuthorizationButton";
             this.AuthorizationButton.Size = new System.Drawing.Size(160, 23);
-            this.AuthorizationButton.TabIndex = 0;
+            this.AuthorizationButton.TabIndex = 2;
             this.AuthorizationButton.Text = "Войти";
             this.AuthorizationButton.UseVisualStyleBackColor = true;
+            this.AuthorizationButton.Click += new System.EventHandler(this.AuthorizationButton_Click);
             // 
             // LoginLabel
             // 
@@ -68,21 +69,22 @@
             this.LoginTextBox.Location = new System.Drawing.Point(59, 21);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(113, 20);
-            this.LoginTextBox.TabIndex = 2;
+            this.LoginTextBox.TabIndex = 0;
             // 
             // PassTextBox
             // 
             this.PassTextBox.Location = new System.Drawing.Point(59, 47);
             this.PassTextBox.Name = "PassTextBox";
+            this.PassTextBox.PasswordChar = '*';
             this.PassTextBox.Size = new System.Drawing.Size(113, 20);
-            this.PassTextBox.TabIndex = 2;
+            this.PassTextBox.TabIndex = 1;
             // 
             // RegistrationButton
             // 
             this.RegistrationButton.Location = new System.Drawing.Point(46, 105);
             this.RegistrationButton.Name = "RegistrationButton";
             this.RegistrationButton.Size = new System.Drawing.Size(92, 23);
-            this.RegistrationButton.TabIndex = 0;
+            this.RegistrationButton.TabIndex = 3;
             this.RegistrationButton.Text = "Регистрация";
             this.RegistrationButton.UseVisualStyleBackColor = true;
             this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
@@ -102,6 +104,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Authorization";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Authorization";
             this.ResumeLayout(false);
             this.PerformLayout();

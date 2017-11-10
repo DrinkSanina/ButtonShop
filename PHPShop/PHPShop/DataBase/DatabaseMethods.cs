@@ -1,5 +1,8 @@
 using System;
 using MySql.Data.MySqlClient;
+using System.Web;
+using System.Windows.Forms;
+
 namespace PHPShop
 {
     class DatabaseMethods : DataBase
@@ -13,6 +16,7 @@ namespace PHPShop
             string sql = "SELECT " + line + " FROM " + table + " WHERE " + cond + " = '" + sd_cond + "'";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             string result = command.ExecuteScalar().ToString();
+            ConnectToDB.Close();
             return result;
         }
 
@@ -24,17 +28,92 @@ namespace PHPShop
             string sql = "UPDATE " + table + " SET " + line + " = " + value + " WHERE " + cond + " = '" + sd_cond + "'";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             command.ExecuteScalar();
+            ConnectToDB.Close();
         }
 
         /// <summary>
         /// Регестрация пользователя в БД
         /// </summary>
-        public void RegUser(String login, String password, Double balance)
+        public void RegUser(String login, String password, Decimal balance)
         {
-            password = password.Trim(' ', '!', '\"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '-', '!', '@', '#', '$', '^', '&', '*', '[', ']', '{', '}');
-            string sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
+            char[] badSym = { ' ', '!', '\"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', '-', '!', '@', '#', '$', '^', '&', '*', '[', ']', '{', '}', '\\' };
+            login = login.Trim(' ');
+            password = password.Trim(' ');
+            int test = -1; //Проверка на символы, которые нельзя вводить
+            test = login.IndexOfAny(badSym);
+            test = password.IndexOfAny(badSym);
+
+            if (test != -1 || password == "" || login == "")
+            {
+                MessageBox.Show("Введите правильный логин или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConnectToDB.Close();
+                return;
+            }
+            string sql = $"SELECT * FROM users WHERE login='{login}'";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
-            command.ExecuteScalar();
+            try
+            {
+                string resultPass = command.ExecuteScalar().ToString();
+            }
+            catch (Exception)
+            {
+                sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
+                command = new MySqlCommand(sql, ConnectToDB);
+                command.ExecuteScalar();
+                MessageBox.Show("Вы успешно зарегестрировались!", "Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConnectToDB.Close();
+                return;
+            }
+            MessageBox.Show("Пользователь с данным логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            ConnectToDB.Close();
+        }
+
+        /// <summary>
+        /// Вход пользователя в приложение
+        /// </summary>
+        public bool LoginUser(String login, String password)
+        {
+            login = HttpUtility.HtmlAttributeEncode(login);
+            password = HttpUtility.HtmlAttributeEncode(password);
+            login = login.Replace('/', ' ');
+            password = password.Replace('/', ' ');
+            login = login.Trim(' ');
+            password = password.Trim(' ');
+            string sql = $"SELECT password FROM users WHERE login='{login}'";
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
+                string resultPass = command.ExecuteScalar().ToString();
+                if (password == resultPass)
+                {
+                    ConnectToDB.Close();
+                    MessageBox.Show("Вы успешно вошли", "Вход", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Неправильный пароль!", "Вход", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Данного пользователя не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            ConnectToDB.Close();
+            return false;
+        }
+
+        /// <summary>
+        /// Получить максимальное значение ключа БД
+        /// </summary>
+        /// <returns>Натуральное число с полученными данными</returns>
+        public int GetMaxConnect(String line, String table)
+        {
+            string sql = "SELECT " + line + " FROM " + table;
+            MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
+            string result = command.ExecuteScalar().ToString();
+            int int_result = Convert.ToInt32(result);
+            return int_result;
         }
     }
 }
