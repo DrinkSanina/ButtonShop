@@ -28,10 +28,12 @@ namespace PHPShop
         {
             try
             {
-                dbMethods.LoginUser(LoginTextBox.Text.ToString(), PassTextBox.Text.ToString());
-                Assortment a = new Assortment();
-                a.Show();
-                Hide();
+                if (dbMethods.LoginUser(LoginTextBox.Text.ToString(), PassTextBox.Text.ToString()) == true)
+                {
+                    Assortment a = new Assortment(LoginTextBox.Text.ToString());
+                    a.Show();
+                    Hide();
+                }
             }
             catch (Exception)
             {

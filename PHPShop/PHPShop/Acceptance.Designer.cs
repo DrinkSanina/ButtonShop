@@ -82,7 +82,7 @@
             this.buy.Location = new System.Drawing.Point(231, 197);
             this.buy.Name = "buy";
             this.buy.Size = new System.Drawing.Size(75, 23);
-            this.buy.TabIndex = 5;
+            this.buy.TabIndex = 1;
             this.buy.Text = "ХООЧУ";
             this.buy.UseVisualStyleBackColor = true;
             this.buy.Click += new System.EventHandler(this.Buy_Click);
@@ -92,7 +92,7 @@
             this.exit.Location = new System.Drawing.Point(318, 197);
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(75, 23);
-            this.exit.TabIndex = 6;
+            this.exit.TabIndex = 2;
             this.exit.Text = "Не";
             this.exit.UseVisualStyleBackColor = true;
             this.exit.Click += new System.EventHandler(this.Exit_Click);
@@ -126,7 +126,7 @@
             0});
             this.amount.Name = "amount";
             this.amount.Size = new System.Drawing.Size(107, 20);
-            this.amount.TabIndex = 9;
+            this.amount.TabIndex = 0;
             this.amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.amount.Value = new decimal(new int[] {
             1,

@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace PHPShop.AssortmentEngine
 {
-    class AssortmentLoad : Assortment
+    class AssortmentLoad
     {
         const String pictureVault = "http://f0169802.xsph.ru/pictures/"; //Путь к папке с картинками на сервере
         DatabaseMethods dbMet = new DatabaseMethods();
 
-        public AssortmentLoad(Panel panel)
+        public AssortmentLoad(Panel panel, EventHandler Picture_Click)
         {
             int m = 0;
             int n = 5;
@@ -38,7 +38,7 @@ namespace PHPShop.AssortmentEngine
                 panel.Controls.Add(label[currentID]);
                 m = m + 110;
 
-                if (currentID % 3 == 0)
+                if (currentID % 5 == 0)
                 {
                     m = 0;
                     n += 150;

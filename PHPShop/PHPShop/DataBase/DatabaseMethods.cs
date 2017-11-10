@@ -71,7 +71,7 @@ namespace PHPShop
         /// <summary>
         /// Вход пользователя в приложение
         /// </summary>
-        public void LoginUser(String login, String password)
+        public bool LoginUser(String login, String password)
         {
             login = HttpUtility.HtmlAttributeEncode(login);
             password = HttpUtility.HtmlAttributeEncode(password);
@@ -88,7 +88,7 @@ namespace PHPShop
                 {
                     ConnectToDB.Close();
                     MessageBox.Show("Вы успешно вошли", "Вход", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
+                    return true;
                 }
                 else
                 {
@@ -100,6 +100,7 @@ namespace PHPShop
                 MessageBox.Show("Данного пользователя не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ConnectToDB.Close();
+            return false;
         }
 
         /// <summary>
