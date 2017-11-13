@@ -8,6 +8,10 @@ namespace PHPShop
     {
         string login;
 
+        /// <summary>
+        /// Создаем класс Assortment
+        /// </summary>
+        /// <param name="login">Логин, полученный после входа/регистрации пользователя</param>
         public Assortment(string login)
         {
             InitializeComponent();
@@ -15,6 +19,11 @@ namespace PHPShop
             UserNameLabel.Text = $"Добро пожаловать, {login}";
         }
 
+        /// <summary>
+        /// Событие нажатия на pictureBox из Ассортимента. Вызывает Acceptance
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Picture_Click(object sender, EventArgs e)
         {
             PictureBox example = (PictureBox)sender;
@@ -22,6 +31,11 @@ namespace PHPShop
             form.ShowDialog();
         }
 
+        /// <summary>
+        /// Событие загрузки динамического Ассортимента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Assortment_Load(object sender, EventArgs e)
         {
             new AssortmentLoad(panel1, Picture_Click);

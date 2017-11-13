@@ -11,6 +11,11 @@ namespace PHPShop
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Нажатие на кнопку регистрации. Проверяет, есть ли ошибки при регистрации, и если все чисто - регистриует нового пользователя в БД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RegistrationButton_Click(object sender, EventArgs e)
         {
             try
@@ -24,6 +29,11 @@ namespace PHPShop
             }
         }
 
+        /// <summary>
+        /// Нажатие на кнопку входа. Осматривает БД на предмет совпадения логина/пароля и соответственно выдает ошибку или дает доступ к магазину
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AuthorizationButton_Click(object sender, EventArgs e)
         {
             try

@@ -10,6 +10,11 @@ namespace PHPShop
 
         string login;
 
+        /// <summary>
+        /// <para>Конструктор, который на вход получает PictureBox, выбранный в ассортименте и login пользователя</para>В результате, он присваивает свойства (опираясь на БД) созданному экземпляру класса currentProduct
+        /// </summary>
+        /// <param name="get">Полученный pictureBox</param>
+        /// <param name="login">Полученный login</param>
         public Acceptance(PictureBox get, string login)
         {
             InitializeComponent();
@@ -21,6 +26,11 @@ namespace PHPShop
             amount.Maximum = Convert.ToInt32(second.GetConnect("amount", "products", "id", currentProduct.ID));
         }
 
+        /// <summary>
+        /// Событие загрузки формы. Выводит на форму цену выбранного товара и баланс пользователя
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Acceptance_Load(object sender, EventArgs e)
         {
             productName.Text = currentProduct.Name;
@@ -29,6 +39,11 @@ namespace PHPShop
             pictureBox1.Image = currentProduct.Image;
         }
 
+        /// <summary>
+        /// Событие нажатия на кнопку "ХООЧУ". Вычитает баланс пользователя и количество товара в БД при покупке
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Buy_Click(object sender, EventArgs e)
         {
             int productAmount = Convert.ToInt32(this.amount.Value);
@@ -58,6 +73,11 @@ namespace PHPShop
             this.Close();
         }
 
+        /// <summary>
+        /// Метод, управляющий строкой стоимости товара
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AmountChanged(object sender, EventArgs e)
         {
             if (Convert.ToString(amount.Value) != "")
