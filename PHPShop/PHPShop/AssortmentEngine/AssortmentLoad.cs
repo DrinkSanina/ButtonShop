@@ -5,8 +5,9 @@ namespace PHPShop.AssortmentEngine
 {
     class AssortmentLoad
     {
-        const String pictureVault = "http://f0169802.xsph.ru/pictures/"; //Путь к папке с картинками на сервере
+        const String pictureVault = "http://localhost/pictures/"; //Путь к папке с картинками на сервере
         DatabaseMethods dbMet = new DatabaseMethods();
+        
 
         /// <summary>
         /// Метод загрузки динамического ассортимента. Расписан подробно при реализации.
@@ -47,4 +48,5 @@ namespace PHPShop.AssortmentEngine
             }
         }
     }
+   
 }

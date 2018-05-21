@@ -16,7 +16,8 @@ namespace PHPShop
             string sql = "SELECT " + line + " FROM " + table + " WHERE " + cond + " = '" + sd_cond + "'";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             string result = command.ExecuteScalar().ToString();
-            ConnectToDB.Close();
+
+            CloseConnection();
             return result;
         }
 
@@ -28,7 +29,7 @@ namespace PHPShop
             string sql = "UPDATE " + table + " SET " + line + " = " + value + " WHERE " + cond + " = '" + sd_cond + "'";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             command.ExecuteScalar();
-            ConnectToDB.Close();
+            CloseConnection();
         }
 
         /// <summary>
@@ -42,30 +43,33 @@ namespace PHPShop
             int test = -1; //Проверка на символы, которые нельзя вводить
             test = login.IndexOfAny(badSym);
             test = password.IndexOfAny(badSym);
+            string sql;
+            string res;
 
             if (test != -1 || password == "" || login == "")
             {
                 MessageBox.Show("Введите правильный логин или пароль.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ConnectToDB.Close();
                 return;
             }
-            string sql = $"SELECT * FROM users WHERE login='{login}'";
+
+            sql = $"SELECT EXISTS(SELECT * FROM users WHERE login='{login}')";
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
-            try
-            {
-                string resultPass = command.ExecuteScalar().ToString();
-            }
-            catch (Exception)
+            res = command.ExecuteScalar().ToString();    
+            CloseConnection();
+
+            if (res == "0")
             {
                 sql = $"INSERT INTO users (login,password,balance) VALUES('{login}','{password}','{balance}')";
                 command = new MySqlCommand(sql, ConnectToDB);
                 command.ExecuteScalar();
                 MessageBox.Show("Вы успешно зарегестрировались!", "Регистрация", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ConnectToDB.Close();
-                return;
             }
-            MessageBox.Show("Пользователь с данным логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            ConnectToDB.Close();
+            else
+            {
+                MessageBox.Show("Пользователь с данным логином уже существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            CloseConnection();
         }
 
         /// <summary>
@@ -79,14 +83,22 @@ namespace PHPShop
             password = password.Replace('/', ' ');
             login = login.Trim(' ');
             password = password.Trim(' ');
-            string sql = $"SELECT password FROM users WHERE login='{login}'";
-            try
+            string res;
+            string sql;
+
+            sql = $"SELECT EXISTS(SELECT * FROM users WHERE login='{login}')";
+            MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
+            res = command.ExecuteScalar().ToString();
+            CloseConnection();
+
+            if(res == "1")
             {
-                MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
-                string resultPass = command.ExecuteScalar().ToString();
-                if (password == resultPass)
+                sql = $"SELECT password FROM users WHERE login = '{login}'";
+                command = new MySqlCommand(sql, ConnectToDB);
+                res = command.ExecuteScalar().ToString();
+                CloseConnection();
+                if(res == password)
                 {
-                    ConnectToDB.Close();
                     MessageBox.Show("Вы успешно вошли", "Вход", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
                 }
@@ -95,11 +107,11 @@ namespace PHPShop
                     MessageBox.Show("Неправильный пароль!", "Вход", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception)
+            else
             {
                 MessageBox.Show("Данного пользователя не существует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            ConnectToDB.Close();
+
             return false;
         }
 
@@ -113,7 +125,8 @@ namespace PHPShop
             MySqlCommand command = new MySqlCommand(sql, ConnectToDB);
             string result = command.ExecuteScalar().ToString();
             int int_result = Convert.ToInt32(result);
-            return int_result;
+            CloseConnection();
+            return int_result;          
         }
     }
 }
